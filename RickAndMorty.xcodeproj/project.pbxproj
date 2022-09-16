@@ -52,9 +52,11 @@
 			isa = PBXGroup;
 			children = (
 				401DE35828D50BC4005223FA /* RickAndMortyApp.swift */,
-				401DE35A28D50BC4005223FA /* ContentView.swift */,
-				401DE35C28D50BC7005223FA /* Assets.xcassets */,
-				401DE35E28D50BC7005223FA /* Preview Content */,
+				401DE36628D50F43005223FA /* Views */,
+				401DE36728D50F55005223FA /* ViewModels */,
+				401DE36828D50F69005223FA /* Models */,
+				401DE36928D50F74005223FA /* Helpers */,
+				401DE36A28D50F97005223FA /* Resources */,
 			);
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -65,6 +67,44 @@
 				401DE35F28D50BC7005223FA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		401DE36628D50F43005223FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				401DE35A28D50BC4005223FA /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		401DE36728D50F55005223FA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		401DE36828D50F69005223FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		401DE36928D50F74005223FA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		401DE36A28D50F97005223FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				401DE35C28D50BC7005223FA /* Assets.xcassets */,
+				401DE35E28D50BC7005223FA /* Preview Content */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +306,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RickAndMorty/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RickAndMorty/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = PE3M477MG2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -295,7 +335,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RickAndMorty/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"RickAndMorty/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = PE3M477MG2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
