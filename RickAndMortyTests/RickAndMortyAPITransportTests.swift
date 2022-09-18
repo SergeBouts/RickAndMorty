@@ -2,7 +2,9 @@ import XCTest
 
 @testable import RickAndMorty
 
-/// Test different scenarios related to transport/server-failure (Note: The tests here are not claimed to be complete, only a demonstration of).
+/// Test different scenarios related to transport/server-failure:
+/// Note: The tests here are not meant to be comprehensive; they are a demo of the idea.
+
 class RickAndMortyAPITransportTests: XCTestCase {
 
     var sut: RickAndMortyAPI!
@@ -50,7 +52,7 @@ class RickAndMortyAPITransportTests: XCTestCase {
                         name: "Earth",
                         url: URL(string: "https://rickandmortyapi.com/api/location/1")!
                     ),
-                    location: RickAndMortyAPI.Model.CharacterLocation(
+                    location: RickAndMortyAPI.Model.CurrentLocation(
                         name: "Earth",
                         url: URL(string: "https://rickandmortyapi.com/api/location/20")!
                     ),
@@ -73,7 +75,7 @@ class RickAndMortyAPITransportTests: XCTestCase {
                         name: "Alien Spa",
                         url: URL(string: "https://rickandmortyapi.com/api/location/64")!
                     ),
-                    location: RickAndMortyAPI.Model.CharacterLocation(
+                    location: RickAndMortyAPI.Model.CurrentLocation(
                         name: "Earth",
                         url: URL(string: "https://rickandmortyapi.com/api/location/20")!
                     ),
@@ -89,9 +91,6 @@ class RickAndMortyAPITransportTests: XCTestCase {
 
         let expectedCharactersResultData = try JSONEncoder().encode(expectedCharactersResult)
 
-
-        // When:
-
         MockURLProtocol.requestHandler = { request in
 
             guard let url = request.url, url == self.apiURL.appendingPathComponent("character")
@@ -99,9 +98,11 @@ class RickAndMortyAPITransportTests: XCTestCase {
                 throw "Unexpected request: \(request.url.logable)"
             }
 
-            let response = HTTPURLResponse(url: self.apiURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (response, expectedCharactersResultData)
         }
+
+        // When:
 
         let charactersResult = try await sut.fetchCharacters(.all)
 
@@ -116,8 +117,6 @@ class RickAndMortyAPITransportTests: XCTestCase {
 
         let badCharactersResultData = Data()
 
-        // When:
-
         MockURLProtocol.requestHandler = { request in
 
             guard let url = request.url, url == self.apiURL.appendingPathComponent("character")
@@ -125,11 +124,11 @@ class RickAndMortyAPITransportTests: XCTestCase {
                 throw "Unexpected request: \(request.url.logable)"
             }
 
-            let response = HTTPURLResponse(url: self.apiURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (response, badCharactersResultData)
         }
 
-        // Then:
+        // When:
 
         var testError: Error!
         do {
@@ -137,6 +136,8 @@ class RickAndMortyAPITransportTests: XCTestCase {
         } catch {
             testError = error
         }
+
+        // Then:
 
         if let error = testError as? RickAndMortyAPI.Error, case .decoding = error {} else {
             XCTFail()
