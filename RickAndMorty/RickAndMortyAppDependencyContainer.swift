@@ -4,7 +4,7 @@ final class RickAndMortyAppDependencyContainer {
 
     // MARK: - Properties
 
-    // Long-lived dependencies
+    // Long-lived dependencies:
     let rickAndMortyRemoteRepository: RickAndMortyRemoteRepository
 
     init() {

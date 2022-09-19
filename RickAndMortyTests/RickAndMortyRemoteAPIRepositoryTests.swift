@@ -2,27 +2,18 @@ import XCTest
 
 @testable import RickAndMorty
 
-// Note: The tests here are not meant to be comprehensive; they are a demo of the idea.
+// Disclaimer: The tests here are not meant to be comprehensive; they are a demo of the idea.
 
 class RickAndMortyRemoteAPIRepositoryTests: XCTestCase {
 
-    final class MockRickAndMortyRemoteAPI: RickAndMortyRemoteAPI {
-
-        var fetchCharactersResultProvider: (() async throws -> [CharacterModel])?
-
-        func fetchCharacters(by filter: CharacterFilter?) async throws -> [CharacterModel] {
-
-            try await fetchCharactersResultProvider!()
-        }
-    }
-
-    let mockRickAndMortyRemoteAPI = MockRickAndMortyRemoteAPI()
+    var mockRickAndMortyRemoteAPI: MockRickAndMortyRemoteAPI!
     var sut: RickAndMortyRemoteAPIRepository<MockRickAndMortyRemoteAPI>!
 
     override func setUp() {
 
         super.setUp()
 
+        mockRickAndMortyRemoteAPI = MockRickAndMortyRemoteAPI()
         sut = RickAndMortyRemoteAPIRepository(remoteAPI: mockRickAndMortyRemoteAPI)
     }
 
@@ -31,6 +22,7 @@ class RickAndMortyRemoteAPIRepositoryTests: XCTestCase {
         super.tearDown()
 
         sut = nil
+        mockRickAndMortyRemoteAPI = nil
     }
 
     func testFetchesCharacters() async throws {

@@ -3,7 +3,7 @@ import XCTest
 @testable import RickAndMorty
 
 /// Test different scenarios related to transport/server-failure:
-/// Note: The tests here are not meant to be comprehensive; they are a demo of the idea.
+/// Disclaimer: The tests here are not meant to be comprehensive; they are a demo of the idea.
 
 class RickAndMortyAPITransportTests: XCTestCase {
 

@@ -13,10 +13,10 @@ struct RickAndMortyApp: App {
 
     init() {
 
-        suppressUnsatisviableConstrantsWarning()
+        suppressUnsatisfiableConstrantsWarning()
     }
 
-    func suppressUnsatisviableConstrantsWarning() {
+    func suppressUnsatisfiableConstrantsWarning() {
         
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
     }

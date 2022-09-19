@@ -2,7 +2,7 @@ import XCTest
 
 @testable import RickAndMorty
 
-// Note: The tests here are not meant to be comprehensive; they are a demo of the idea.
+// Disclaimer: The tests here are not meant to be comprehensive; they are a demo of the idea.
 
 class RickAndMortyRemoteAPIAdapterTests: XCTestCase {
 

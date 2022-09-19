@@ -44,6 +44,11 @@
 		407A6B6728D821CC00E723FD /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B6628D821CC00E723FD /* ImageCache.swift */; };
 		407A6B6928D8368F00E723FD /* UIImage+resizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B6828D8368F00E723FD /* UIImage+resizedImage.swift */; };
 		407A6B8528D8BF9800E723FD /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8428D8BF9800E723FD /* Const.swift */; };
+		407A6B8728D8CC4E00E723FD /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8628D8CC4D00E723FD /* CharacterListViewModelTests.swift */; };
+		407A6B8928D8CE0900E723FD /* MockRickAndMortyRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8828D8CE0900E723FD /* MockRickAndMortyRemoteAPI.swift */; };
+		407A6B8B28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8A28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift */; };
+		407A6B8D28D8D99500E723FD /* CharacterCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8C28D8D99500E723FD /* CharacterCellViewModelTests.swift */; };
+		407A6B8F28D8DD6700E723FD /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8E28D8DD6700E723FD /* CharacterDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +101,11 @@
 		407A6B6628D821CC00E723FD /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		407A6B6828D8368F00E723FD /* UIImage+resizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resizedImage.swift"; sourceTree = "<group>"; };
 		407A6B8428D8BF9800E723FD /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		407A6B8628D8CC4D00E723FD /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
+		407A6B8828D8CE0900E723FD /* MockRickAndMortyRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRickAndMortyRemoteAPI.swift; sourceTree = "<group>"; };
+		407A6B8A28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRickAndMortyRemoteRepository.swift; sourceTree = "<group>"; };
+		407A6B8C28D8D99500E723FD /* CharacterCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellViewModelTests.swift; sourceTree = "<group>"; };
+		407A6B8E28D8DD6700E723FD /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +250,9 @@
 				401DE39128D5F781005223FA /* RickAndMortyAPITransportTests.swift */,
 				407A6B3828D77CC300E723FD /* RickAndMortyRemoteAPIAdapterTests.swift */,
 				407A6B3A28D78C7E00E723FD /* RickAndMortyRemoteAPIRepositoryTests.swift */,
+				407A6B8628D8CC4D00E723FD /* CharacterListViewModelTests.swift */,
+				407A6B8C28D8D99500E723FD /* CharacterCellViewModelTests.swift */,
+				407A6B8E28D8DD6700E723FD /* CharacterDetailViewModelTests.swift */,
 				401DE39A28D5F860005223FA /* Helpers */,
 			);
 			path = RickAndMortyTests;
@@ -249,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				407A6B0C28D628DC00E723FD /* MockURLProtocol.swift */,
+				407A6B8828D8CE0900E723FD /* MockRickAndMortyRemoteAPI.swift */,
+				407A6B8A28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift */,
 				407A6B0E28D6423600E723FD /* String+.swift */,
 				407A6B0A28D60A6500E723FD /* TimeoutTask.swift */,
 			);
@@ -401,11 +416,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				407A6B1128D6BCC100E723FD /* RickAndMortyAPITests.swift in Sources */,
+				407A6B8F28D8DD6700E723FD /* CharacterDetailViewModelTests.swift in Sources */,
 				407A6B3928D77CC300E723FD /* RickAndMortyRemoteAPIAdapterTests.swift in Sources */,
 				401DE39228D5F781005223FA /* RickAndMortyAPITransportTests.swift in Sources */,
 				407A6B0D28D628DC00E723FD /* MockURLProtocol.swift in Sources */,
 				407A6B0F28D6423600E723FD /* String+.swift in Sources */,
+				407A6B8B28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift in Sources */,
+				407A6B8728D8CC4E00E723FD /* CharacterListViewModelTests.swift in Sources */,
 				407A6B0B28D60A6500E723FD /* TimeoutTask.swift in Sources */,
+				407A6B8928D8CE0900E723FD /* MockRickAndMortyRemoteAPI.swift in Sources */,
+				407A6B8D28D8D99500E723FD /* CharacterCellViewModelTests.swift in Sources */,
 				407A6B3B28D78C7F00E723FD /* RickAndMortyRemoteAPIRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
