@@ -1,6 +1,6 @@
 import Foundation
 
-struct CharacterModel: Equatable {
+struct CharacterModel: Equatable, Identifiable {
 
     enum Status: Equatable {
         case alive

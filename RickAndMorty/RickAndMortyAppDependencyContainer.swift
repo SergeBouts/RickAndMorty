@@ -17,4 +17,29 @@ final class RickAndMortyAppDependencyContainer {
 
         self.rickAndMortyRemoteRepository = makeRickAndMortyRemoteRepository()
     }
+
+    // MARK: - API
+
+    func makeCharacterListViewModel() -> CharacterListViewModel {
+
+        CharacterListViewModel(
+            rickAndMortyRemoteRepository: rickAndMortyRemoteRepository,
+            cellViewForCharacter: { [unowned self] in
+                CharacterCellView(viewModel: self.makeCharacterCellViewModel(for: $0))
+            },
+            detailViewForCharacter: { [unowned self] in
+                CharacterDetailView(viewModel: self.makeCharacterDetailViewModel(for: $0))
+            }
+        )
+    }
+
+    func makeCharacterCellViewModel(for character: CharacterModel) -> CharacterCellViewModel {
+
+        CharacterCellViewModel(characterModel: character)
+    }
+
+    func makeCharacterDetailViewModel(for character: CharacterModel) -> CharacterDetailViewModel {
+
+        CharacterDetailViewModel(characterModel: character)
+    }
 }
