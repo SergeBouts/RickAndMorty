@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 struct RickAndMortyRemoteAPIAdapter: RickAndMortyRemoteAPI {
 
@@ -17,8 +18,22 @@ struct RickAndMortyRemoteAPIAdapter: RickAndMortyRemoteAPI {
         } else {
             apiArgs = .all
         }
-        let charactersResult = try await api.fetchCharacters(apiArgs)
-        return charactersResult.results.map(CharacterModel.init(from:))
+        do {
+            let charactersResult = try await api.fetchCharacters(apiArgs)
+            return charactersResult.results.map(CharacterModel.init(from:))
+        } catch {
+            if case RickAndMortyAPI.Error.client(let statusCode) = error,
+               statusCode.code == 404 {
+                return []
+            } else {
+                throw error
+            }
+        }
+    }
+
+    func fetchCharacterAvatar(at url: URL) async throws -> UIImage {
+
+        try await api.fetchCharacterAvatar(at: url)
     }
 }
 

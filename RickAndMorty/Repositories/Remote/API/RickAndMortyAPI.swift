@@ -1,5 +1,6 @@
 import Foundation
 import os.log
+import UIKit
 
 final class RickAndMortyAPI {
 
@@ -10,6 +11,7 @@ final class RickAndMortyAPI {
     // MARK: - Initialization
 
     init(urlSession: URLSession = .shared) {
+
         self.urlSession = urlSession
     }
 
@@ -42,6 +44,29 @@ final class RickAndMortyAPI {
         } catch {
 
             os_log(.error, log: OSLog.default, "Fetching characters for {args:\(args),page:\(page.logable)} @\(endpointURL) failed: \(error.localizedDescription)")
+            throw error
+        }
+    }
+
+    func fetchCharacterAvatar(at url: URL) async throws -> UIImage {
+
+        os_log(.info, log: OSLog.default, "Fetching character avatar @\(url)...")
+
+        do {
+            let data = try await performRequest(at: url)
+
+            os_log(.info, log: OSLog.default, "Character avatar @\(url) fetched successfully")
+
+            if let image = UIImage(data: data) {
+                return image
+            } else {
+                os_log(.error, log: OSLog.default, "Character avatar @\(url) is corrupted")
+                throw Error.corruptedImage
+            }
+
+        } catch {
+
+            os_log(.error, log: OSLog.default, "Fetching character avatar @\(url) failed: \(error.localizedDescription)")
             throw error
         }
     }

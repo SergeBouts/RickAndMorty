@@ -2,7 +2,7 @@ import Foundation
 
 extension RickAndMortyAPI {
 
-    public enum Error: Swift.Error {
+    enum Error: Swift.Error {
 
         /// Invalid request, e.g. invalid URL.
         case invalidRequest(String)
@@ -25,13 +25,18 @@ extension RickAndMortyAPI {
         /// Client error.
         case client(statusCode: HTTPStatusCode)
 
+        /// Corrupted image.
+        case corruptedImage
+
         case other(statusCode: HTTPStatusCode, data: Data)
     }
+
+
 }
 
 extension RickAndMortyAPI.Error: LocalizedError {
 
-    public var errorDescription: String? {
+    var errorDescription: String? {
 
         switch self {
         case .invalidRequest(let description): return "Invalid request: \(description)"
@@ -41,6 +46,7 @@ extension RickAndMortyAPI.Error: LocalizedError {
         case .decoding(let error): return "The server returned data in an unexpected format: \(error). Try updating the app."
         case .server(let statusCode): return "Server error, status code: \(statusCode.code)"
         case .client(let statusCode): return "Client error, status code: \(statusCode.code)"
+        case .corruptedImage: return "Corrupted image data"
         case .other(let statusCode, _): return "Other error, status code: \(statusCode.code)"
         }
     }

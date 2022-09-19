@@ -2,24 +2,55 @@ import SwiftUI
 
 struct CharacterListView: View {
 
-    @ObservedObject var viewModel: CharacterListViewModel
+    @StateObject var viewModel: CharacterListViewModel
     @State private var showingCharacterDetailsScreen: CharacterModel?
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        
-        List(viewModel.characters) { character in
 
-            Button {
-                showingCharacterDetailsScreen = character
-            } label: {
-                viewModel.cellViewForCharacter(character)
+        let err = Binding.constant($viewModel.error.wrappedValue ?? nil)
+
+        NavigationView {
+            List {
+                ForEach(viewModel.characters) { character in
+
+                    Button {
+                        showingCharacterDetailsScreen = character
+                    } label: {
+                        viewModel.cellViewForCharacter(character)
+                    }
+                }
             }
+            .navigationBarTitle("Rick & Morty")
         }
+        .searchable(
+            text: $viewModel.searchFilter,
+            placement: .automatic
+        )
         .task {
             await viewModel.load()
         }
         .sheet(item: $showingCharacterDetailsScreen) { character in
             viewModel.detailViewForCharacter(character)
         }
+        .overlay(
+            Group {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: Color.white))
+                        .scaleEffect(2)
+                        .allowsHitTesting(false)
+                }
+            }
+        )
+        .alert(isPresented: Binding.constant(err.wrappedValue != nil), content: {
+            let error = err.wrappedValue!
+            return Alert(
+                title: Text("Error!"),
+                message: Text(error.asString),
+                dismissButton: .default(Text("OK"), action: {
+                    dismiss()
+                }))
+        })
     }
 }

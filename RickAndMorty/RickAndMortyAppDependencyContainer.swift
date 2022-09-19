@@ -35,11 +35,17 @@ final class RickAndMortyAppDependencyContainer {
 
     func makeCharacterCellViewModel(for character: CharacterModel) -> CharacterCellViewModel {
 
-        CharacterCellViewModel(characterModel: character)
+        CharacterCellViewModel(characterModel: character, avatarThumbLoader: { [unowned self] in
+            
+            try? await self.rickAndMortyRemoteRepository.avatarImageThumb(at: character.image)
+        })
     }
 
     func makeCharacterDetailViewModel(for character: CharacterModel) -> CharacterDetailViewModel {
 
-        CharacterDetailViewModel(characterModel: character)
+        CharacterDetailViewModel(characterModel: character, avatarLoader: { [unowned self] in
+
+            try? await self.rickAndMortyRemoteRepository.avatarImage(at: character.image)
+        })
     }
 }
