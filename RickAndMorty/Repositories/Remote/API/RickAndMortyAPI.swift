@@ -19,16 +19,16 @@ final class RickAndMortyAPI {
 
     func fetchCharacters(_ args: Args, page: Int? = nil) async throws -> Model.CharactersResult {
 
-        guard let endpointURL = CharactersEndpoint(args: args, page: page).url
+        guard let request = CharactersRemoteAPIRequest(args: args, page: page)?.request
         else {
 
             throw Error.invalidRequest("Invalid URL for characters endpoint for {args:\(args),page:\(page.logable)}")
         }
 
-        os_log(.info, log: OSLog.default, "Fetching characters for {args:\(args),page:\(page.logable)} @\(endpointURL)...")
+        os_log(.info, log: OSLog.default, "Fetching characters for {args:\(args),page:\(page.logable)} @\(request)...")
 
         do {
-            let data = try await performRequest(at: endpointURL)
+            let data = try await performRequest(.request(request))
 
             os_log(.info, log: OSLog.default, "Characters for {args:\(args),page:\(page.logable)} fetched successfully")
 
@@ -43,17 +43,23 @@ final class RickAndMortyAPI {
             }
         } catch {
 
-            os_log(.error, log: OSLog.default, "Fetching characters for {args:\(args),page:\(page.logable)} @\(endpointURL) failed: \(error.localizedDescription)")
+            os_log(.error, log: OSLog.default, "Fetching characters for {args:\(args),page:\(page.logable)} @\(request) failed: \(error.localizedDescription)")
             throw error
         }
     }
 
     func fetchCharacterAvatar(at url: URL) async throws -> UIImage {
 
+//        guard let request = AvatarRemoteAPIRequest(fileName: url.lastPathComponent)?.request
+//        else {
+//
+//            throw Error.invalidRequest("Invalid URL for characters endpoint for {url:\(url)}")
+//        }
+
         os_log(.info, log: OSLog.default, "Fetching character avatar @\(url)...")
 
         do {
-            let data = try await performRequest(at: url)
+            let data = try await performRequest(.url(url))
 
             os_log(.info, log: OSLog.default, "Character avatar @\(url) fetched successfully")
 
@@ -73,12 +79,21 @@ final class RickAndMortyAPI {
 
     // MARK: - Helpers
 
-    private func performRequest(at url: URL) async throws -> Data {
+    enum PerformArg {
+        case url(URL)
+        case request(URLRequest)
+    }
+
+    private func performRequest(_ arg: PerformArg) async throws -> Data {
 
         let data: Data, response: URLResponse
         do {
-
-            (data, response) = try await urlSession.data(from: url)
+            switch arg {
+            case .url(let url):
+                (data, response) = try await urlSession.data(from: url)
+            case .request(let request):
+                (data, response) = try await urlSession.data(for: request)
+            }
 
         } catch {
 
