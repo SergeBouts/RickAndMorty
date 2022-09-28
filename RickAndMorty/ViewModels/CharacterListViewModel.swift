@@ -52,7 +52,8 @@ final class CharacterListViewModel: ObservableObject {
         do {
             try await isLodingWrapper {
 
-                let characters = try await rickAndMortyRemoteRepository.characters(by: !searchFilter.isEmpty ? CharacterFilter(name: searchFilter) : nil)
+                let characters = try await rickAndMortyRemoteRepository.characters(
+                    by: !searchFilter.isEmpty ? CharacterFilter(name: searchFilter) : nil)
                 await MainActor.run {
                     if Const.CharacterListView.isAnimated {
                         withAnimation {

@@ -48,9 +48,9 @@
 		407A6B8B28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8A28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift */; };
 		407A6B8D28D8D99500E723FD /* CharacterCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8C28D8D99500E723FD /* CharacterCellViewModelTests.swift */; };
 		407A6B8F28D8DD6700E723FD /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407A6B8E28D8DD6700E723FD /* CharacterDetailViewModelTests.swift */; };
-		40E9ECBA28DBDD7200C67EC2 /* RemoteAPIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9ECB728DBDD7200C67EC2 /* RemoteAPIEndpoint.swift */; };
+		40E9ECBA28DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9ECB728DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIEndpoint.swift */; };
 		40E9ECBB28DBDD7200C67EC2 /* RickAndMortyAPI+CharactersRemoteAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9ECB828DBDD7200C67EC2 /* RickAndMortyAPI+CharactersRemoteAPIRequest.swift */; };
-		40E9ECBC28DBDD7200C67EC2 /* RemoteAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9ECB928DBDD7200C67EC2 /* RemoteAPIRequest.swift */; };
+		40E9ECBC28DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9ECB928DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIRequest.swift */; };
 		40E9ECBE28DBE5FE00C67EC2 /* RickAndMortyAPI+AvatarRemoteAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9ECBD28DBE5FE00C67EC2 /* RickAndMortyAPI+AvatarRemoteAPIRequest.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,9 +108,9 @@
 		407A6B8A28D8D38200E723FD /* MockRickAndMortyRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRickAndMortyRemoteRepository.swift; sourceTree = "<group>"; };
 		407A6B8C28D8D99500E723FD /* CharacterCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellViewModelTests.swift; sourceTree = "<group>"; };
 		407A6B8E28D8DD6700E723FD /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
-		40E9ECB728DBDD7200C67EC2 /* RemoteAPIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPIEndpoint.swift; sourceTree = "<group>"; };
+		40E9ECB728DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RickAndMortyAPI+RemoteAPIEndpoint.swift"; sourceTree = "<group>"; };
 		40E9ECB828DBDD7200C67EC2 /* RickAndMortyAPI+CharactersRemoteAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RickAndMortyAPI+CharactersRemoteAPIRequest.swift"; sourceTree = "<group>"; };
-		40E9ECB928DBDD7200C67EC2 /* RemoteAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPIRequest.swift; sourceTree = "<group>"; };
+		40E9ECB928DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RickAndMortyAPI+RemoteAPIRequest.swift"; sourceTree = "<group>"; };
 		40E9ECBD28DBE5FE00C67EC2 /* RickAndMortyAPI+AvatarRemoteAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RickAndMortyAPI+AvatarRemoteAPIRequest.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,11 +238,11 @@
 		401DE36C28D51A67005223FA /* API */ = {
 			isa = PBXGroup;
 			children = (
-				40E9ECB728DBDD7200C67EC2 /* RemoteAPIEndpoint.swift */,
-				40E9ECB928DBDD7200C67EC2 /* RemoteAPIRequest.swift */,
+				401DE36D28D51A7B005223FA /* RickAndMortyAPI.swift */,
+				40E9ECB728DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIEndpoint.swift */,
+				40E9ECB928DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIRequest.swift */,
 				40E9ECB828DBDD7200C67EC2 /* RickAndMortyAPI+CharactersRemoteAPIRequest.swift */,
 				40E9ECBD28DBE5FE00C67EC2 /* RickAndMortyAPI+AvatarRemoteAPIRequest.swift */,
-				401DE36D28D51A7B005223FA /* RickAndMortyAPI.swift */,
 				401DE37828D56457005223FA /* RickAndMortyAPI+Model.swift */,
 				401DE37328D538DC005223FA /* RickAndMortyAPI+Error.swift */,
 				401DE37528D53952005223FA /* RickAndMortyAPI+HTTPStatusCode.swift */,
@@ -305,6 +305,8 @@
 			dependencies = (
 			);
 			name = RickAndMorty;
+			packageProductDependencies = (
+			);
 			productName = RickAndMorty;
 			productReference = 401DE35528D50BC4005223FA /* RickAndMorty.app */;
 			productType = "com.apple.product-type.application";
@@ -355,6 +357,8 @@
 				Base,
 			);
 			mainGroup = 401DE34C28D50BC4005223FA;
+			packageReferences = (
+			);
 			productRefGroup = 401DE35628D50BC4005223FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -397,7 +401,7 @@
 				407A6B5D28D7CA4700E723FD /* CharacterCellView.swift in Sources */,
 				407A6B2C28D7649A00E723FD /* RickAndMortyRemoteAPIRepository.swift in Sources */,
 				407A6B3228D7678A00E723FD /* CharacterModel.swift in Sources */,
-				40E9ECBC28DBDD7200C67EC2 /* RemoteAPIRequest.swift in Sources */,
+				40E9ECBC28DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIRequest.swift in Sources */,
 				407A6B3528D76A7F00E723FD /* RickAndMortyRemoteAPIAdapter.swift in Sources */,
 				407A6B5B28D7C2AD00E723FD /* CharacterListViewModel.swift in Sources */,
 				401DE35B28D50BC4005223FA /* ContentView.swift in Sources */,
@@ -409,7 +413,7 @@
 				40E9ECBE28DBE5FE00C67EC2 /* RickAndMortyAPI+AvatarRemoteAPIRequest.swift in Sources */,
 				401DE36E28D51A7B005223FA /* RickAndMortyAPI.swift in Sources */,
 				407A6B6928D8368F00E723FD /* UIImage+resizedImage.swift in Sources */,
-				40E9ECBA28DBDD7200C67EC2 /* RemoteAPIEndpoint.swift in Sources */,
+				40E9ECBA28DBDD7200C67EC2 /* RickAndMortyAPI+RemoteAPIEndpoint.swift in Sources */,
 				407A6AEF28D5F94A00E723FD /* Optional+.swift in Sources */,
 				407A6B5728D7A8AB00E723FD /* RickAndMortyAppDependencyContainer.swift in Sources */,
 				401DE35928D50BC4005223FA /* RickAndMortyApp.swift in Sources */,

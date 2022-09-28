@@ -88,13 +88,13 @@ final class RickAndMortyAPI {
 
         let data: Data, response: URLResponse
         do {
+
             switch arg {
             case .url(let url):
                 (data, response) = try await urlSession.data(from: url)
             case .request(let request):
                 (data, response) = try await urlSession.data(for: request)
             }
-
         } catch {
 
             throw Error.transport(error)

@@ -14,10 +14,16 @@ struct RickAndMortyApp: App {
     init() {
 
         suppressUnsatisfiableConstrantsWarning()
+        removeAllCachedResponses()
     }
 
     func suppressUnsatisfiableConstrantsWarning() {
         
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+    }
+
+    func removeAllCachedResponses() {
+
+        URLCache.shared.removeAllCachedResponses()
     }
 }

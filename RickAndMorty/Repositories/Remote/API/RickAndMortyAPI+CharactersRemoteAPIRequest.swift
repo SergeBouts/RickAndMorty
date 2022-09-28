@@ -6,6 +6,9 @@ extension RickAndMortyAPI {
 
         struct EndpointSpec: RemoteAPIEndpointSpecProvider {
 
+            let args: Args
+            let page: Int?
+
             let path: String = "/\(RickAndMortyAPI.RootSegment)/character"
             var queryItems: [URLQueryItem]? {
 
@@ -21,9 +24,6 @@ extension RickAndMortyAPI {
 
                 return queryItems
             }
-
-            let args: Args
-            let page: Int?
         }
 
         struct RequestSpec: RemoteAPIRequestSpecProvider {
