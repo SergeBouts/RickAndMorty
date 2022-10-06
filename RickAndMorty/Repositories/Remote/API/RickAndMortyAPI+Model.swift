@@ -19,7 +19,7 @@ extension RickAndMortyAPI {
         }
 
         // https://rickandmortyapi.com/documentation/#character
-        struct Character: Identifiable, Equatable {
+        struct Character: Equatable {
             let id: Int
             let name: String
             let status: Status

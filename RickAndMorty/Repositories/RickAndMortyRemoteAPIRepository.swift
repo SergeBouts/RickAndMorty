@@ -22,10 +22,10 @@ final class RickAndMortyRemoteAPIRepository<T: RickAndMortyRemoteAPI>: RickAndMo
         }
     }
 
-    func characters(by filter: CharacterFilter? = nil) async throws -> [CharacterModel] {
+    func characters(by filter: CharacterFilter? = nil, page: Int? = nil) async throws -> CharactersResult? {
 
         do {
-            return try await remoteAPI.fetchCharacters(by: filter)
+            return try await remoteAPI.fetchCharacters(by: filter, page: page)
         } catch {
             throw RepositoryError.rickAndMortyRepoError(error)
         }

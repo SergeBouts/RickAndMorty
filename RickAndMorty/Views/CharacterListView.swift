@@ -1,5 +1,4 @@
 import SwiftUI
-import PaginatedScrollView
 
 struct CharacterListView: View {
 
@@ -20,6 +19,13 @@ struct CharacterListView: View {
                     } label: {
                         viewModel.cellViewForCharacter(character)
                     }
+                    .task {
+                        await viewModel.loadMoreCharactersIfNeeded(currentCharacter: character)
+                    }
+                }
+                if viewModel.isLoading {
+                    
+                    ProgressView()
                 }
             }
             .navigationBarTitle("Rick & Morty")
