@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 import os.log
 
-final class CharacterListViewModel: ObservableObject {
+final class CharacterListViewModel: ObservableObject, TrackLoadingTrait {
 
     // MARK: - Properties
 
@@ -60,7 +60,7 @@ final class CharacterListViewModel: ObservableObject {
         os_log(.info, log: OSLog.default, "Loading page #\(self.currentPage)")
 
         do {
-            try await isLodingWrapper {
+            try await trackLoading {
 
                 let result = try await rickAndMortyRemoteRepository.characters(
                     by: !searchFilter.isEmpty ? CharacterFilter(name: searchFilter) : nil,
@@ -94,27 +94,6 @@ final class CharacterListViewModel: ObservableObject {
         let thresholdIndex = await characters.index(characters.endIndex, offsetBy: -5)
         if await characters.firstIndex(where: { $0.id == character.id }) == thresholdIndex {
             await load()
-        }
-    }
-
-    func isLodingWrapper<T>(exec: () async throws -> T) async throws -> T {
-
-        await MainActor.run { withAnimation(.linear(duration: 0.1)) { self.isLoading = true } }
-
-        let result: Result<T, Error>
-        do {
-            result = .success(try await exec())
-        } catch {
-            result = .failure(error)
-        }
-
-        await MainActor.run { withAnimation(.linear(duration: 0.1)) { self.isLoading = false } }
-
-        switch result {
-        case .success(let v):
-            return v
-        case .failure(let e):
-            throw e
         }
     }
 }

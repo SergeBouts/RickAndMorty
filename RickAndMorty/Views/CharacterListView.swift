@@ -28,7 +28,7 @@ struct CharacterListView: View {
                     ProgressView()
                 }
             }
-            .navigationBarTitle("Rick & Morty")
+            .navigationTitle("Rick & Morty")
         }
         .searchable(
             text: $viewModel.searchFilter,
